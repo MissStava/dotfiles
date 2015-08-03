@@ -15,19 +15,17 @@ set laststatus=2                " always show the current mode, file name, file 
 
 set noswapfile                  " stop a swap file from being created
 
-syntax on                       " enable syntax highlighting
+" syntax on                       " enable syntax highlighting
 set scrolloff=3                 " show lines above and below when side scrolling
 
 let mapleader=","               " set comma as the custom command 'kick off' character
 
-" call pathogen#infect()          " enable pathogen plugin
+execute pathogen#infect()        
 
 filetype on                     " vim tries to detect the filetype of a file when opening
 filetype plugin on              " load plugins based on filetype
 filetype indent on              " load indent scheme based on filetype
 
-set background=light
-let g:solarized_visibility="high"
-let g:solarized_contract="high"
-let g:solarized_termcolors=256
+syntax enable
+set background=dark
 colorscheme solarized
