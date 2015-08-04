@@ -1,5 +1,6 @@
 export JAVA_HOME=/opt/java/current-java
-export PATH=$PATH:/opt/java/current-java/bin
+export GRADLE_HOME=/usr/share/gradle
+export PATH=$PATH:$JAVA_HOME/bin:$GRADLE_HOME/bin
 SSH_ENV=$HOME/.ssh/environment
 
 # start the ssh-agent
