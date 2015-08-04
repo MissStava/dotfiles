@@ -1,3 +1,5 @@
+export JAVA_HOME=/opt/java/current-java
+export PATH=$PATH:/opt/java/current-java/bin
 SSH_ENV=$HOME/.ssh/environment
 
 # start the ssh-agent
