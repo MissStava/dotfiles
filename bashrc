@@ -1,5 +1,5 @@
 export JAVA_HOME=/opt/java/current-java
-export GRADLE_HOME=/usr/share/gradle
+export GRADLE_HOME=/opt/gradle/gradle-2.5
 export PATH=$PATH:$JAVA_HOME/bin:$GRADLE_HOME/bin
 SSH_ENV=$HOME/.ssh/environment
 
