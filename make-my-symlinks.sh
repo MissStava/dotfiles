@@ -1,9 +1,9 @@
 
 
 
-dir = ~/dotfiles
-olddir = ~/dotfiles_old
-files = "bashrc vimrc tmux.conf"
+dir=~/dotfiles
+olddir=~/dotfiles_old
+files="bashrc vimrc tmux.conf"
 
 mkdir -p $olddir
 cd $dir
