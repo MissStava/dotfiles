@@ -29,3 +29,18 @@ filetype indent on              " load indent scheme based on filetype
 syntax enable
 set background=dark
 colorscheme solarized
+
+let g:projectionist_heuristics = {
+      \ "src/main/java/" : {
+      \ "src/main/java/*.java": {"alternate": "src/test/java/{}Test.java",
+      \                          "type": "src"},
+      \ "src/test/java/*Test.java": {"alternate": "src/main/java/{}.java",
+      \                          "type": "spec"},
+      \ },
+      \ "project.clj" : {
+      \ "src/*.clj": {"alternate": "spec/{}_spec.clj",
+      \               "type": "src"},
+      \ "spec/*_spec.clj": {"alternate": "src/{}.clj",
+      \                     "type": "spec"}
+      \ }
+      \ }
