@@ -3,7 +3,7 @@
 
 dir=~/dotfiles
 olddir=~/dotfiles_old
-files="bashrc vimrc tmux.conf"
+files="bashrc vimrc tmux.conf gitconfig"
 
 mkdir -p $olddir
 cd $dir

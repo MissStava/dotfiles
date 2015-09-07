@@ -1,0 +1,16 @@
+[push]
+	default = simple
+[user]
+	name = nullMethod
+	email = null.method@gmail.com
+[core]
+	editor = vim
+	autocrlf = input
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	po = pull origin
+	last = log -1 HEAD
+	unstage = reset HEAD --
