@@ -20,6 +20,15 @@ set scrolloff=3                 " show lines above and below when side scrolling
 
 let mapleader=","               " set comma as the custom command 'kick off' character
 
+set history=700                 " set how many lines of history to remember
+" set autoread                    " autoread when a file is changed from outside
+set cmdheight=2                 " set the height of the command bar
+set smartcase                   " enable smart thinking about Cases in search
+set hlsearch                    " highlight search results
+set showmatch                   " show matching brackets when highlighted
+" set mat=2                       " how many milliseconds to blink when highlighting brackets
+set encoding=utf8               " set utf8 as standard encoding
+
 execute pathogen#infect()        
 
 filetype on                     " vim tries to detect the filetype of a file when opening
