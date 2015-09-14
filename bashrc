@@ -22,3 +22,17 @@ if [ -f "${SSH_ENV}" ]; then
 else
     start_agent;
 fi
+
+alias c='clear'
+alias ll='ls --color=auto'
+alias ll='ls -ls'
+alias apt-get='sudo apt-get'
+alias ..='cd ..'
+alias mkdir='mkdir -p'
+alias vi=vim
+alias ping='ping -c 5'
+alias ports='netstat -tulanp'
+alias gss='git status'
+alias gpl='git pull origin'
+alias gplr='git pull --rebase origin'
+alias gph='git push origin'
