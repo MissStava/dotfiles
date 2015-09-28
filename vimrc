@@ -36,11 +36,11 @@ filetype plugin on              " load plugins based on filetype
 filetype indent on              " load indent scheme based on filetype
 
 syntax enable
-set background=dark
-let g:solarized_visibility = "high"
-let g:solarized_contrast = "high"
-let g:solairzed_termcolors=256
-colorscheme solarized
+"set background=dark
+"let g:solarized_visibility = "high"
+"let g:solarized_contrast = "high"
+"let g:solairzed_termcolors=256
+"colorscheme solarized
 
 let g:projectionist_heuristics = {
       \ "src/main/java/" : {
