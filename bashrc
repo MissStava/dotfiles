@@ -1,5 +1,5 @@
 export JAVA_HOME=/opt/java/current-java
-export GRADLE_HOME=/opt/gradle/gradle-2.6
+export GRADLE_HOME=/opt/gradle/current-gradle
 export RUBY_HOME=$HOME/.rbenv
 export PATH=$PATH:$JAVA_HOME/bin:$GRADLE_HOME/bin:$RUBY_HOME/bin
 SSH_ENV=$HOME/.ssh/environment
