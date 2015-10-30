@@ -1,6 +1,7 @@
 export JAVA_HOME=/opt/java/current-java
 export GRADLE_HOME=/opt/gradle/gradle-2.6
-export PATH=$PATH:$JAVA_HOME/bin:$GRADLE_HOME/bin
+export RUBY_HOME=$HOME/.rbenv
+export PATH=$PATH:$JAVA_HOME/bin:$GRADLE_HOME/bin:$RUBY_HOME/bin
 SSH_ENV=$HOME/.ssh/environment
 
 # start the ssh-agent
@@ -36,3 +37,7 @@ alias gss='git status'
 alias gpl='git pull origin'
 alias gplr='git pull --rebase origin'
 alias gph='git push origin'
+
+eval "$(rbenv init -)"
+
+set -o vi
