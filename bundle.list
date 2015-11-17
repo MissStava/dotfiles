@@ -4,3 +4,4 @@ vim-fireplace
 vim-projectionist
 vim-salve
 nerdtree
+syntastic
