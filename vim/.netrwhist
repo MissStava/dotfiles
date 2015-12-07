@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/engineer/projects/Clojure'
+let g:netrw_dirhist_2='/home/engineer/git/videostore/.settings'
+let g:netrw_dirhist_3='/home/engineer/.gradle'
+let g:netrw_dirhist_4='/home/engineer/git/videostore/src/main/java/videostore'
+let g:netrw_dirhist_5='/home/engineer/git/services/sales-order-entity-service/.settings'
