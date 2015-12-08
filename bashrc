@@ -1,7 +1,7 @@
 export JAVA_HOME=/opt/java/current-java
 export GRADLE_HOME=/opt/gradle/current-gradle
 export RBENV_HOME=$HOME/.rbenv
-export SCALA_HOME=/opt/scala-2.11.7
+export SCALA_HOME=/opt/scala/current-scala
 export PATH=$PATH:$JAVA_HOME/bin:$GRADLE_HOME/bin:$RBENV_HOME/bin:$SCALA_HOME/bin
 SSH_ENV=$HOME/.ssh/environment
 
