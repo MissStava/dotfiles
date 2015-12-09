@@ -12,21 +12,22 @@ set number                      " show line number in the gutter column
 " set relativenumber            " show line numbers relative to current line
 set ruler                       " helpful bar at the bottom right of the page
 set laststatus=2                " always show the current mode, file name, file status, ruler, etc
+set t_Co=256                    " use 256 colours
 
 set noswapfile                  " stop a swap file from being created
 
-" syntax on                       " enable syntax highlighting
+syntax on                       " enable syntax highlighting
 set scrolloff=3                 " show lines above and below when side scrolling
 
 let mapleader=","               " set comma as the custom command 'kick off' character
 
 set history=700                 " set how many lines of history to remember
-" set autoread                    " autoread when a file is changed from outside
+" set autoread                  " autoread when a file is changed from outside
 set cmdheight=2                 " set the height of the command bar
 set smartcase                   " enable smart thinking about Cases in search
 set hlsearch                    " highlight search results
-set showmatch                   " show matching brackets when highlighted
-" set mat=2                       " how many milliseconds to blink when highlighting brackets
+" set showmatch                 " show matching brackets when highlighted
+" set mat=2                     " how many milliseconds to blink when highlighting brackets
 set encoding=utf8               " set utf8 as standard encoding
 
 execute pathogen#infect()        
