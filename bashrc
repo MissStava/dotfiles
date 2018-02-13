@@ -1,10 +1,11 @@
 export JAVA_HOME=/opt/java/current-java
 export GRADLE_HOME=/opt/gradle/current-gradle
 export MAVEN_HOME=/opt/maven/current-maven
-export TERRAFORM_HOME=/opt/terraform
+export TERRAFORM_HOME=/opt/hashicorp
 export CONSUL_HOME=/opt/consul
 export RBENV_HOME=/home/stu/.rbenv
-export PATH=$PATH:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$TERRAFORM_HOME/terraform:$CONSUL_HOME/consul:$RBENV_HOME/bin
+export NODE_HOME=/opt/node
+export PATH=$PATH:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$TERRAFORM_HOME:$CONSUL_HOME/consul:$RBENV_HOME/bin:$NODE_HOME/bin
 
 SSH_ENV=$HOME/.ssh/environment
 
