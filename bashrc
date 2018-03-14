@@ -1,11 +1,8 @@
 export JAVA_HOME=/opt/java/current-java
 export GRADLE_HOME=/opt/gradle/current-gradle
-export MAVEN_HOME=/opt/maven/current-maven
-export TERRAFORM_HOME=/opt/hashicorp
-export CONSUL_HOME=/opt/consul
-export RBENV_HOME=/home/stu/.rbenv
-export NODE_HOME=/opt/node
-export PATH=$PATH:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$TERRAFORM_HOME:$CONSUL_HOME/consul:$RBENV_HOME/bin:$NODE_HOME/bin
+export MAVEN_HOME=/opt/apache/current-maven
+export RBENV_HOME=~/.rbenv
+export PATH=$PATH:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$RBENV_HOME/bin:~/.local/bin
 
 SSH_ENV=$HOME/.ssh/environment
 
@@ -22,3 +19,4 @@ set -o vi
 
 eval "$(rbenv init -)"
 
+source <(kubectl completion bash)
