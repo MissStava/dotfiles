@@ -14,6 +14,7 @@ alias mkdir='mkdir -p'
 alias vi=vim
 alias ping='ping -c 5'
 alias ports='netstat -tulanp'
+alias kc='kubectl'
 
 set -o vi
 
