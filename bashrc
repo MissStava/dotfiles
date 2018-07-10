@@ -3,7 +3,9 @@ export GROOVY_HOME=/opt/groovy/current-groovy
 export GRADLE_HOME=/opt/gradle/current-gradle
 export MAVEN_HOME=/opt/apache/current-maven
 export RBENV_HOME=~/.rbenv
-export PATH=$PATH:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$RBENV_HOME/bin:~/.local/bin:$GROOVY_HOME/bin
+export HASHICORP_HOME=/opt/hashicorp
+export KATANA_HOME=~/gitlab/ccoe/katana
+export PATH=$PATH:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$RBENV_HOME/bin:~/.local/bin:$GROOVY_HOME/bin:$HASHICORP_HOME:$KATANA_HOME
 
 SSH_ENV=$HOME/.ssh/environment
 
@@ -16,6 +18,7 @@ alias vi=vim
 alias ping='ping -c 5'
 alias ports='netstat -tulanp'
 alias kc='kubectl'
+alias tf='terraform'
 
 set -o vi
 

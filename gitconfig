@@ -7,9 +7,10 @@
 	editor = vim
 	autocrlf = input
 [alias]
-	co = checkout
+	ch = checkout
+    chb = checkout -b
 	br = branch
-	ci = commit
+	co = commit
 	st = status
 	po = pull origin
 	last = log -1 HEAD
