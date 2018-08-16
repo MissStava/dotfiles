@@ -1,0 +1,16 @@
+{
+    "workbench.startupEditor": "newUntitledFile",
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "window.zoomLevel": 0,
+    "extensions.ignoreRecommendations": false,
+    "[python]": {},
+    "files.associations": {
+        "*.cc": "shellscript"
+    },
+    "shellcheck.disableVersionCheck": true,
+    "editor.tabSize": 2,
+    "editor.fontSize": 12,
+    "editor.detectIndentation": false,
+    "files.trimTrailingWhitespace": true
+}

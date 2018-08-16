@@ -5,32 +5,33 @@ export MAVEN_HOME=/opt/apache/current-maven
 export RBENV_HOME=~/.rbenv
 export HASHICORP_HOME=/opt/hashicorp
 export KATANA_HOME=~/gitlab/ccoe/katana
-export PATH=$PATH:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$RBENV_HOME/bin:~/.local/bin:$GROOVY_HOME/bin:$HASHICORP_HOME:$KATANA_HOME
+export HELM_HOME=/opt/helm
+export PATH=$PATH:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$RBENV_HOME/bin:~/.local/bin:$GROOVY_HOME/bin:$HASHICORP_HOME:$KATANA_HOME:$HELM_HOME
 
 SSH_ENV=$HOME/.ssh/environment
 
 alias ll='ls --color=auto -lsa'
 alias apt='sudo apt'
-alias apt-get='sudo apt-get'
 alias ..='cd ..'
 alias mkdir='mkdir -p'
-alias vi=vim
+alias vi='vim'
 alias ping='ping -c 5'
 alias ports='netstat -tulanp'
+alias gcl='gcloud'
 alias kc='kubectl'
 alias tf='terraform'
+
+alias k8sshow='kubectl get --ignore-not-found=true -o wide nodes ; echo ; kubectl get --ignore-not-found=true -o wide ds,svc,cm,statefulsets,hpa,deploy,rs,rc,pdb,po,pvc,pv'
+alias k8sshowall='kubectl get --ignore-not-found=true -o wide nodes ; echo ; kubectl get --ignore-not-found=true --all-namespaces=true ds,svc,cm,statefulsets,hpa,deploy,rs,rc,pdb,po,pvc,pv'
+alias k8sshowproxy='ps -ef | grep '\''[k]ubectl proxy'\'' | xargs | awk -F'\'' '\'' '\''{print }'\'''
+alias k8sstartproxy='ps -ef | grep '\''[k]ubectl proxy'\'' | xargs | awk -F'\'' '\'' '\''{print }'\'' | xargs kill && cd /tmp && rm -f nohup.out && nohup kubectl proxy &'
+alias k8sstopproxy='ps -ef | grep '\''[k]ubectl proxy'\'' | xargs | awk -F'\'' '\'' '\''{print }'\'' | xargs kill'
+alias k8swatch='watch -n 1 '\''kubectl get --ignore-not-found=true -o wide nodes ; echo ; kubectl get --ignore-not-found=true -o wide ds,svc,cm,statefulsets,hpa,deploy,rs,rc,pdb,po,pvc,pv'\'''
+alias k8swatchall='watch -n 1 '\''kubectl get --ignore-not-found=true -o wide nodes ; echo ; kubectl get --ignore-not-found=true --all-namespaces=true ds,svc,cm,statefulsets,hpa,deploy,rs,rc,pdb,po,pvc,pv'\'''
 
 set -o vi
 
 eval "$(rbenv init -)"
-
-#source <(kubectl completion bash)
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/opt/google/google-cloud-sdk/path.bash.inc' ]; then source '/opt/google/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/opt/google/google-cloud-sdk/completion.bash.inc' ]; then source '/opt/google/google-cloud-sdk/completion.bash.inc'; fi
 
 export NVM_DIR="/home/stu/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
