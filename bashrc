@@ -12,7 +12,10 @@ SSH_ENV=$HOME/.ssh/environment
 
 alias ll='ls --color=auto -lsa'
 alias apt='sudo apt'
+alias apt-get='sudo apt-get'
+alias aptall='sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y'
 alias ..='cd ..'
+alias ..l='cd ..; ll'
 alias mkdir='mkdir -p'
 alias vi='vim'
 alias ping='ping -c 5'
@@ -20,6 +23,12 @@ alias ports='netstat -tulanp'
 alias gcl='gcloud'
 alias kc='kubectl'
 alias tf='terraform'
+alias ytp='ant clean && ant tpyamltest all && ./hybris.sh debug'
+alias ycps='ant clean && ant cpsyamltest all && ./hybris.sh debug'
+alias ybmx='ant clean && ant bmxyamltest all && ./hybris.sh debug'
+alias ykl='ant clean && ant klyamltest all && ./hybris.sh debug'
+alias yccf='ant clean && ant ccfyamltest all && ./hybris.sh debug'
+alias cgs='clear; git status'
 
 alias k8sshow='kubectl get --ignore-not-found=true -o wide nodes ; echo ; kubectl get --ignore-not-found=true -o wide ds,svc,cm,statefulsets,hpa,deploy,rs,rc,pdb,po,pvc,pv'
 alias k8sshowall='kubectl get --ignore-not-found=true -o wide nodes ; echo ; kubectl get --ignore-not-found=true --all-namespaces=true ds,svc,cm,statefulsets,hpa,deploy,rs,rc,pdb,po,pvc,pv'
@@ -160,3 +169,14 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[ -f /home/hilts/node_modules/tabtab/.completions/serverless.bash ] && . /home/hilts/node_modules/tabtab/.completions/serverless.bash
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[ -f /home/hilts/node_modules/tabtab/.completions/sls.bash ] && . /home/hilts/node_modules/tabtab/.completions/sls.bash
