@@ -37,13 +37,14 @@ alias ykl='ant clean && ant klyamltest all && ./hybris.sh debug'
 alias yccf='ant clean && ant ccfyamltest all && ./hybris.sh debug'
 alias cgs='clear; git status'
 
-alias k8sshow='kubectl get --ignore-not-found=true -o wide nodes ; echo ; kubectl get --ignore-not-found=true -o wide ds,svc,cm,statefulsets,hpa,deploy,rs,rc,pdb,po,pvc,pv'
-alias k8sshowall='kubectl get --ignore-not-found=true -o wide nodes ; echo ; kubectl get --ignore-not-found=true --all-namespaces=true ds,svc,cm,statefulsets,hpa,deploy,rs,rc,pdb,po,pvc,pv'
+alias k8sshow="kubectl get --ignore-not-found=true -o wide --sort-by='{.metadata.name}' componentstatuses ; echo ; kubectl get --ignore-not-found=true -o wide nodes ; echo ; kubectl get --ignore-not-found=true -o wide cronjobs,jobs,secrets,ingresses,certificates,networkpolicies,service,daemonsets,statefulsets,deployments,horizontalpodautoscalers,poddisruptionbudgets,pods"
+alias k8sshowall="kubectl get --ignore-not-found=true -o wide --sort-by='{.metadata.name}' componentstatuses ; echo ; kubectl get --ignore-not-found=true -o wide nodes ; echo ; kubectl get --ignore-not-found=true --all-namespaces=true -o wide cronjobs,jobs,secrets,ingresses,certificates,networkpolicies,service,daemonsets,statefulsets,deployments,horizontalpodautoscalers,poddisruptionbudgets,pods"
 alias k8sshowproxy='ps -ef | grep '\''[k]ubectl proxy'\'' | xargs | awk -F'\'' '\'' '\''{print }'\'''
 alias k8sstartproxy='ps -ef | grep '\''[k]ubectl proxy'\'' | xargs | awk -F'\'' '\'' '\''{print }'\'' | xargs kill && cd /tmp && rm -f nohup.out && nohup kubectl proxy &'
 alias k8sstopproxy='ps -ef | grep '\''[k]ubectl proxy'\'' | xargs | awk -F'\'' '\'' '\''{print }'\'' | xargs kill'
-alias k8swatch='watch -n 1 '\''kubectl get --ignore-not-found=true -o wide nodes ; echo ; kubectl get --ignore-not-found=true -o wide ds,ingress,svc,cm,statefulsets,hpa,deploy,rs,rc,pdb,po,pvc,pv'\'''
-alias k8swatchall='watch -n 1 '\''kubectl get --ignore-not-found=true -o wide nodes ; echo ; kubectl get --ignore-not-found=true --all-namespaces=true ds,svc,cm,statefulsets,hpa,deploy,rs,rc,pdb,po,pvc,pv'\'''
+alias k8swatch="watch -n 1 'kubectl get --ignore-not-found=true -o wide --sort-by='{.metadata.name}' componentstatuses ; echo ; kubectl get --ignore-not-found=true -o wide nodes ; echo ; kubectl get --ignore-not-found=true -o wide cronjobs,jobs,secrets,ingresses,certificates,networkpolicies,service,daemonsets,statefulsets,deployments,persistentvolumeclaim,horizontalpodautoscalers,poddisruptionbudgets,pods'"
+alias k8swatchall="watch -n 1 'kubectl get --ignore-not-found=true -o wide --sort-by='{.metadata.name}' componentstatuses ; echo ; kubectl get --ignore-not-found=true -o wide nodes ; echo ; kubectl get --ignore-not-found=true --all-namespaces=true -o wide cronjobs,jobs,secrets,ingresses,certificates,networkpolicies,service,daemonsets,statefulsets,deployments,horizontalpodautoscalers,poddisruptionbudgets,pods'"
+alias k8swatchevents='kubectl get events --watch=true'
 
 set -o vi
 
@@ -187,3 +188,4 @@ export NVM_DIR="$HOME/.nvm"
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [ -f /home/hilts/node_modules/tabtab/.completions/sls.bash ] && . /home/hilts/node_modules/tabtab/.completions/sls.bash
+source <(kubectl completion bash)
