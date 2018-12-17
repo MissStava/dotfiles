@@ -12,5 +12,8 @@
     "editor.tabSize": 2,
     "editor.fontSize": 12,
     "editor.detectIndentation": false,
-    "files.trimTrailingWhitespace": true
-}
+    "files.trimTrailingWhitespace": true,
+    "git.confirmSync": false,
+    "editor.minimap.enabled": false,
+    "editor.wordWrapColumn": 160
+  }
