@@ -6,7 +6,8 @@ export RBENV_HOME=~/.rbenv
 export HASHICORP_HOME=/opt/hashicorp
 export KATANA_HOME=~/gitlab/ccoe/katana
 export HELM_HOME=/opt/helm
-export PATH=$PATH:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$RBENV_HOME/bin:~/.local/bin:$GROOVY_HOME/bin:$HASHICORP_HOME:$KATANA_HOME:$HELM_HOME
+export PHANTOM_HOME=/opt/phantom
+export PATH=$PATH:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$RBENV_HOME/bin:~/.local/bin:$GROOVY_HOME/bin:$HASHICORP_HOME:$KATANA_HOME:$HELM_HOME:$PHANTOM_HOME/bin
 
 SSH_ENV=$HOME/.ssh/environment
 
@@ -42,9 +43,11 @@ alias k8sshowall="kubectl get --ignore-not-found=true -o wide --sort-by='{.metad
 alias k8sshowproxy='ps -ef | grep '\''[k]ubectl proxy'\'' | xargs | awk -F'\'' '\'' '\''{print }'\'''
 alias k8sstartproxy='ps -ef | grep '\''[k]ubectl proxy'\'' | xargs | awk -F'\'' '\'' '\''{print }'\'' | xargs kill && cd /tmp && rm -f nohup.out && nohup kubectl proxy &'
 alias k8sstopproxy='ps -ef | grep '\''[k]ubectl proxy'\'' | xargs | awk -F'\'' '\'' '\''{print }'\'' | xargs kill'
-alias k8swatch="watch -n 1 'kubectl get --ignore-not-found=true -o wide --sort-by='{.metadata.name}' componentstatuses ; echo ; kubectl get --ignore-not-found=true -o wide nodes ; echo ; kubectl get --ignore-not-found=true -o wide cronjobs,jobs,secrets,ingresses,certificates,networkpolicies,service,daemonsets,statefulsets,deployments,persistentvolumeclaim,horizontalpodautoscalers,poddisruptionbudgets,pods'"
+alias k8swatch="watch -n 1 'kubectl get --ignore-not-found=true -o wide --sort-by='{.metadata.name}' componentstatuses ; echo ; kubectl get --ignore-not-found=true -o wide nodes ; echo ; kubectl get --ignore-not-found=true -o wide pods,service,ingresses,statefulsets,deployments,networkpolicies,daemonsets,persistentvolumeclaim,cronjobs,jobs,secrets,horizontalpodautoscalers'"
 alias k8swatchall="watch -n 1 'kubectl get --ignore-not-found=true -o wide --sort-by='{.metadata.name}' componentstatuses ; echo ; kubectl get --ignore-not-found=true -o wide nodes ; echo ; kubectl get --ignore-not-found=true --all-namespaces=true -o wide cronjobs,jobs,secrets,ingresses,certificates,networkpolicies,service,daemonsets,statefulsets,deployments,horizontalpodautoscalers,poddisruptionbudgets,pods'"
 alias k8swatchevents='kubectl get events --watch=true'
+
+alias aws_who_am_i='echo "ACCOUNT  : $(aws iam list-account-aliases | jq -r '.AccountAliases[]')" ; echo "USER ARN : $(aws sts get-caller-identity | jq -r '.Arn')"'
 
 set -o vi
 
@@ -170,13 +173,13 @@ fi
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
+#if ! shopt -oq posix; then
+#  if [ -f /usr/share/bash-completion/bash_completion ]; then
+#    . /usr/share/bash-completion/bash_completion
+#  elif [ -f /etc/bash_completion ]; then
+#    . /etc/bash_completion
+#  fi
+#fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -189,3 +192,5 @@ export NVM_DIR="$HOME/.nvm"
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [ -f /home/hilts/node_modules/tabtab/.completions/sls.bash ] && . /home/hilts/node_modules/tabtab/.completions/sls.bash
 source <(kubectl completion bash)
+
+complete -C /opt/hashicorp/vault vault
