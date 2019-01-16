@@ -7,7 +7,9 @@ export HASHICORP_HOME=/opt/hashicorp
 export KATANA_HOME=~/gitlab/ccoe/katana
 export HELM_HOME=/opt/helm
 export PHANTOM_HOME=/opt/phantom
-export PATH=$PATH:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$RBENV_HOME/bin:~/.local/bin:$GROOVY_HOME/bin:$HASHICORP_HOME:$KATANA_HOME:$HELM_HOME:$PHANTOM_HOME/bin
+export GOMPLATE_HOME=/opt/Gomplate
+export TOOLING_IMAGE_HOME=~/gitlab/ccoe/ccoe/docker/tooling
+export PATH=$PATH:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$RBENV_HOME/bin:~/.local/bin:$GROOVY_HOME/bin:$HASHICORP_HOME:$KATANA_HOME:$HELM_HOME:$PHANTOM_HOME/bin:$GOMPLATE_HOME:$TOOLING_IMAGE_HOME
 
 SSH_ENV=$HOME/.ssh/environment
 
@@ -15,16 +17,9 @@ alias ll='ls --color=auto -lsa'
 alias apt='sudo apt'
 alias apt-get='sudo apt-get'
 alias aptall='sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y'
-alias cd..='cd ..'
-alias .='cd ..'
-alias .l='.; ll'
-alias ..='.; cd ..'
-alias ..l='..; ll'
-alias ...='..; cd ..'
-alias ...l='...; ll'
-alias ....='...; cd ..'
-alias ....l='....; ll'
 alias mkdir='mkdir -p'
+alias cd..='cd ..'
+alias ..='cd ..'
 alias vi='vim'
 alias ping='ping -c 5'
 alias ports='netstat -tulanp'
@@ -48,6 +43,7 @@ alias k8swatchall="watch -n 1 'kubectl get --ignore-not-found=true -o wide --sor
 alias k8swatchevents='kubectl get events --watch=true'
 
 alias aws_who_am_i='echo "ACCOUNT  : $(aws iam list-account-aliases | jq -r '.AccountAliases[]')" ; echo "USER ARN : $(aws sts get-caller-identity | jq -r '.Arn')"'
+alias aws_clear_env_creds='for item in $(set | grep AWS | grep KEY | awk -F= '"'"'{print $1}'"'"'); do unset ${item}; done'
 
 set -o vi
 
@@ -191,6 +187,11 @@ export NVM_DIR="$HOME/.nvm"
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [ -f /home/hilts/node_modules/tabtab/.completions/sls.bash ] && . /home/hilts/node_modules/tabtab/.completions/sls.bash
-source <(kubectl completion bash)
 
 complete -C /opt/hashicorp/vault vault
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/hilts/google-cloud-sdk/path.bash.inc' ]; then . '/home/hilts/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/hilts/google-cloud-sdk/completion.bash.inc' ]; then . '/home/hilts/google-cloud-sdk/completion.bash.inc'; fi
