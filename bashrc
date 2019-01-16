@@ -41,6 +41,7 @@ alias k8swatchevents='kubectl get events --watch=true'
 
 alias aws_who_am_i='echo "ACCOUNT  : $(aws iam list-account-aliases | jq -r '.AccountAliases[]')" ; echo "USER ARN : $(aws sts get-caller-identity | jq -r '.Arn')"'
 alias aws_clear_env_creds='for item in $(set | grep AWS | grep KEY | awk -F= '"'"'{print $1}'"'"'); do unset ${item}; done'
+alias aws_creds='mv ~/Downloads/credentials ~/.aws/credentials'
 
 set -o vi
 
