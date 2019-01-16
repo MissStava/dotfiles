@@ -5,14 +5,18 @@ export MAVEN_HOME=/opt/apache/current-maven
 export RBENV_HOME=~/.rbenv
 export HASHICORP_HOME=/opt/hashicorp
 export KATANA_HOME=~/gitlab/ccoe/katana
-export HELM_HOME=/opt/helm
-export PATH=$PATH:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$RBENV_HOME/bin:~/.local/bin:$GROOVY_HOME/bin:$HASHICORP_HOME:$KATANA_HOME:$HELM_HOME
+export GO_HOME=/opt/go
+export PATH=$PATH:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$RBENV_HOME/bin:~/.local/bin:$GROOVY_HOME/bin:$HASHICORP_HOME:$KATANA_HOME:$GO_HOME/bin
 
 SSH_ENV=$HOME/.ssh/environment
 
+export GOPATH=$HOME/projects/go
+
 alias ll='ls --color=auto -lsa'
 alias apt='sudo apt'
+alias aptall='sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y'
 alias ..='cd ..'
+alias ..l='cd ..; ll'
 alias mkdir='mkdir -p'
 alias vi='vim'
 alias ping='ping -c 5'
@@ -20,6 +24,7 @@ alias ports='netstat -tulanp'
 alias gcl='gcloud'
 alias kc='kubectl'
 alias tf='terraform'
+alias cgs='clear; git status'
 
 alias k8sshow='kubectl get --ignore-not-found=true -o wide nodes ; echo ; kubectl get --ignore-not-found=true -o wide ds,svc,cm,statefulsets,hpa,deploy,rs,rc,pdb,po,pvc,pv'
 alias k8sshowall='kubectl get --ignore-not-found=true -o wide nodes ; echo ; kubectl get --ignore-not-found=true --all-namespaces=true ds,svc,cm,statefulsets,hpa,deploy,rs,rc,pdb,po,pvc,pv'
@@ -27,21 +32,18 @@ alias k8sshowproxy='ps -ef | grep '\''[k]ubectl proxy'\'' | xargs | awk -F'\'' '
 alias k8sstartproxy='ps -ef | grep '\''[k]ubectl proxy'\'' | xargs | awk -F'\'' '\'' '\''{print }'\'' | xargs kill && cd /tmp && rm -f nohup.out && nohup kubectl proxy &'
 alias k8sstopproxy='ps -ef | grep '\''[k]ubectl proxy'\'' | xargs | awk -F'\'' '\'' '\''{print }'\'' | xargs kill'
 alias k8swatch='watch -n 1 '\''kubectl get --ignore-not-found=true -o wide nodes ; echo ; kubectl get --ignore-not-found=true -o wide ds,svc,cm,statefulsets,hpa,deploy,rs,rc,pdb,po,pvc,pv'\'''
+alias k8swatch='watch -n 1 '\''kubectl get --ignore-not-found=true -o wide nodes ; echo ; kubectl get --ignore-not-found=true -o wide po,svc,ingress,pvc,ds,cm,statefulsets,hpa,deploy,rs,rc,pdb,pv'\'''
 alias k8swatchall='watch -n 1 '\''kubectl get --ignore-not-found=true -o wide nodes ; echo ; kubectl get --ignore-not-found=true --all-namespaces=true ds,svc,cm,statefulsets,hpa,deploy,rs,rc,pdb,po,pvc,pv'\'''
+
+alias aws_who_am_i='echo "ACCOUNT  : $(aws iam list-account-aliases | jq -r '.AccountAliases[]')" ; echo "USER ARN : $(aws sts get-caller-identity | jq -r '.Arn')"'
+alias aws_clear_env_creds='for item in $(set | grep AWS | grep KEY | awk -F= '"'"'{print $1}'"'"'); do unset ${item}; done'
 
 set -o vi
 
 eval "$(rbenv init -)"
 
-export NVM_DIR="/home/stu/.nvm"
+export NVM_DIR="/home/hilts/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[ -f /home/stu/.nvm/versions/node/v8.10.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] && . /home/stu/.nvm/versions/node/v8.10.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[ -f /home/stu/.nvm/versions/node/v8.10.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] && . /home/stu/.nvm/versions/node/v8.10.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
@@ -160,3 +162,4 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
