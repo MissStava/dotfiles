@@ -35,8 +35,8 @@ alias k8sshowall="kubectl get --ignore-not-found=true -o wide --sort-by='{.metad
 alias k8sshowproxy='ps -ef | grep '\''[k]ubectl proxy'\'' | xargs | awk -F'\'' '\'' '\''{print }'\'''
 alias k8sstartproxy='ps -ef | grep '\''[k]ubectl proxy'\'' | xargs | awk -F'\'' '\'' '\''{print }'\'' | xargs kill && cd /tmp && rm -f nohup.out && nohup kubectl proxy &'
 alias k8sstopproxy='ps -ef | grep '\''[k]ubectl proxy'\'' | xargs | awk -F'\'' '\'' '\''{print }'\'' | xargs kill'
-alias k8swatch="watch -n 1 'kubectl get --ignore-not-found=true -o wide --sort-by='{.metadata.name}' componentstatuses ; echo ; kubectl get --ignore-not-found=true -o wide nodes ; echo ; kubectl get --ignore-not-found=true -o wide pods,service,ingresses,statefulsets,deployments,networkpolicies,daemonsets,persistentvolumeclaim,cronjobs,jobs,secrets,horizontalpodautoscalers'"
-alias k8swatchall="watch -n 1 'kubectl get --ignore-not-found=true -o wide --sort-by='{.metadata.name}' componentstatuses ; echo ; kubectl get --ignore-not-found=true -o wide nodes ; echo ; kubectl get --ignore-not-found=true --all-namespaces=true -o wide cronjobs,jobs,secrets,ingresses,certificates,networkpolicies,service,daemonsets,statefulsets,deployments,horizontalpodautoscalers,poddisruptionbudgets,pods'"
+alias k8swatch="watch -n 1 'kubectl get --ignore-not-found=true -o wide --sort-by='{.metadata.name}' componentstatuses ; echo ; kubectl get --ignore-not-found=true -o wide nodes ; echo ; kubectl get --ignore-not-found=true -o wide pods,service,configmap,ingresses,statefulsets,deployments,networkpolicies,daemonsets,persistentvolumeclaim,cronjobs,jobs,secrets,horizontalpodautoscalers'"
+alias k8swatchall="watch -n 1 'kubectl get --ignore-not-found=true -o wide --sort-by='{.metadata.name}' componentstatuses ; echo ; kubectl get --ignore-not-found=true -o wide nodes ; echo ; kubectl get --ignore-not-found=true --all-namespaces=true -o wide pods,service,configmap,ingresses,statefulsets,deployments,networkpolicies,daemonsets,persistentvolumeclaim,cronjobs,jobs,secrets,horizontalpodautoscalers'"
 alias k8swatchevents='kubectl get events --watch=true'
 
 alias aws_who_am_i='echo "ACCOUNT  : $(aws iam list-account-aliases | jq -r '.AccountAliases[]')" ; echo "USER ARN : $(aws sts get-caller-identity | jq -r '.Arn')"'
@@ -186,3 +186,4 @@ if [ -f '/home/hilts/google-cloud-sdk/path.bash.inc' ]; then . '/home/hilts/goog
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/hilts/google-cloud-sdk/completion.bash.inc' ]; then . '/home/hilts/google-cloud-sdk/completion.bash.inc'; fi
+export PATH=/home/hilts/gitlab/ccoe/ccoe/terraform/katana:${PATH}
