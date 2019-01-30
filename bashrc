@@ -1,20 +1,12 @@
-export JAVA_HOME=/opt/java/current-java
-export GROOVY_HOME=/opt/groovy/current-groovy
-export GRADLE_HOME=/opt/gradle/current-gradle
-export MAVEN_HOME=/opt/apache/current-maven
-export RBENV_HOME=~/.rbenv
 export HASHICORP_HOME=/opt/hashicorp
-export KATANA_HOME=~/gitlab/ccoe/katana
+export KATANA_HOME=~/gitlab/ccoe/ccoe/terraform/katana
 export HELM_HOME=/opt/helm
-export GO_HOME=/opt/go
-export PHANTOM_HOME=/opt/phantom
 export GOMPLATE_HOME=/opt/Gomplate
 export TOOLING_IMAGE_HOME=~/gitlab/ccoe/ccoe/docker/tooling
-export PATH=$PATH:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$RBENV_HOME/bin:~/.local/bin:$GROOVY_HOME/bin:$HASHICORP_HOME:$KATANA_HOME:$HELM_HOME:$PHANTOM_HOME/bin:$GOMPLATE_HOME:$TOOLING_IMAGE_HOME:$GO_HOME/bin
+export PERSONAL_BIN=~/bin
+export PATH=$PATH:~/.local/bin:$HASHICORP_HOME:$KATANA_HOME:$HELM_HOME:$GOMPLATE_HOME:$TOOLING_IMAGE_HOME
 
 SSH_ENV=$HOME/.ssh/environment
-
-export GOPATH=$HOME/projects/go
 
 alias ll='ls --color=auto -lsa'
 alias apt='sudo apt'
@@ -44,15 +36,6 @@ alias aws_clear_env_creds='for item in $(set | grep AWS | grep KEY | awk -F= '"'
 alias aws_creds='mv ~/Downloads/credentials ~/.aws/credentials'
 
 set -o vi
-
-eval "$(rbenv init -)"
-
-export NVM_DIR="/home/hilts/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
 
 # If not running interactively, don't do anything
 case $- in
@@ -136,9 +119,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
@@ -148,36 +128,9 @@ alias l='ls -CF'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-#if ! shopt -oq posix; then
-#  if [ -f /usr/share/bash-completion/bash_completion ]; then
-#    . /usr/share/bash-completion/bash_completion
-#  elif [ -f /etc/bash_completion ]; then
-#    . /etc/bash_completion
-#  fi
-#fi
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[ -f /home/hilts/node_modules/tabtab/.completions/serverless.bash ] && . /home/hilts/node_modules/tabtab/.completions/serverless.bash
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[ -f /home/hilts/node_modules/tabtab/.completions/sls.bash ] && . /home/hilts/node_modules/tabtab/.completions/sls.bash
 
 complete -C /opt/hashicorp/vault vault
 
@@ -186,4 +139,3 @@ if [ -f '/home/hilts/google-cloud-sdk/path.bash.inc' ]; then . '/home/hilts/goog
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/hilts/google-cloud-sdk/completion.bash.inc' ]; then . '/home/hilts/google-cloud-sdk/completion.bash.inc'; fi
-export PATH=/home/hilts/gitlab/ccoe/ccoe/terraform/katana:${PATH}
