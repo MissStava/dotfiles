@@ -1,10 +1,8 @@
 export HASHICORP_HOME=/opt/hashicorp
 export KATANA_HOME=~/gitlab/ccoe/ccoe/terraform/katana
-export HELM_HOME=/opt/helm
-export GOMPLATE_HOME=/opt/Gomplate
 export TOOLING_IMAGE_HOME=~/gitlab/ccoe/ccoe/docker/tooling
 export PERSONAL_BIN=~/bin
-export PATH=$PATH:~/.local/bin:$HASHICORP_HOME:$KATANA_HOME:$HELM_HOME:$GOMPLATE_HOME:$TOOLING_IMAGE_HOME
+export PATH=$PATH:~/.local/bin:$HASHICORP_HOME:$KATANA_HOME:$TOOLING_IMAGE_HOME
 
 SSH_ENV=$HOME/.ssh/environment
 
