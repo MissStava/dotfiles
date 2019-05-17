@@ -1,8 +1,8 @@
 [push]
 	default = simple
 [user]
-	name = Steph Hilton
-	email = stephanie.hilton@travisperkins.co.uk
+	name = Stephanie Hilton
+	email = null.method@gmail.com
 [core]
 	editor = vim
 	autocrlf = input
