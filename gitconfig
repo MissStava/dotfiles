@@ -8,7 +8,7 @@
 	autocrlf = input
 [alias]
 	ch = checkout
-    chb = checkout -b
+        chb = checkout -b
 	br = branch
 	co = commit
 	st = status

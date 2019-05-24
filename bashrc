@@ -1,10 +1,8 @@
-export HASHICORP_HOME=/opt/hashicorp
-export KATANA_HOME=~/gitlab/ccoe/ccoe/terraform/katana
-export TOOLING_IMAGE_HOME=~/gitlab/ccoe/ccoe/docker/tooling
-export PERSONAL_BIN=~/bin
-export PATH=$PATH:~/.local/bin:$HASHICORP_HOME:$KATANA_HOME:$TOOLING_IMAGE_HOME
+export PATH=$PATH:~/gitlab/gitlab.com/travis-perkins/ccoe/docker/tooling/scripts
 
 SSH_ENV=$HOME/.ssh/environment
+
+export GOPATH=~/go
 
 alias ll='ls --color=auto -lsa'
 alias apt='sudo apt'
@@ -20,18 +18,36 @@ alias kc='kubectl'
 alias tf='terraform'
 alias cgs='clear; git status'
 
-alias k8sshow="kubectl get --ignore-not-found=true -o wide --sort-by='{.metadata.name}' componentstatuses ; echo ; kubectl get --ignore-not-found=true -o wide nodes ; echo ; kubectl get --ignore-not-found=true -o wide cronjobs,jobs,secrets,ingresses,certificates,networkpolicies,service,daemonsets,statefulsets,deployments,horizontalpodautoscalers,poddisruptionbudgets,pods"
-alias k8sshowall="kubectl get --ignore-not-found=true -o wide --sort-by='{.metadata.name}' componentstatuses ; echo ; kubectl get --ignore-not-found=true -o wide nodes ; echo ; kubectl get --ignore-not-found=true --all-namespaces=true -o wide cronjobs,jobs,secrets,ingresses,certificates,networkpolicies,service,daemonsets,statefulsets,deployments,horizontalpodautoscalers,poddisruptionbudgets,pods"
-alias k8sshowproxy='ps -ef | grep '\''[k]ubectl proxy'\'' | xargs | awk -F'\'' '\'' '\''{print }'\'''
-alias k8sstartproxy='ps -ef | grep '\''[k]ubectl proxy'\'' | xargs | awk -F'\'' '\'' '\''{print }'\'' | xargs kill && cd /tmp && rm -f nohup.out && nohup kubectl proxy &'
-alias k8sstopproxy='ps -ef | grep '\''[k]ubectl proxy'\'' | xargs | awk -F'\'' '\'' '\''{print }'\'' | xargs kill'
-alias k8swatch="watch -n 1 'kubectl get --ignore-not-found=true -o wide --sort-by='{.metadata.name}' componentstatuses ; echo ; kubectl get --ignore-not-found=true -o wide nodes ; echo ; kubectl get --ignore-not-found=true -o wide pods,service,configmap,ingresses,statefulsets,deployments,networkpolicies,daemonsets,persistentvolumeclaim,cronjobs,jobs,secrets,horizontalpodautoscalers'"
-alias k8swatchall="watch -n 1 'kubectl get --ignore-not-found=true -o wide --sort-by='{.metadata.name}' componentstatuses ; echo ; kubectl get --ignore-not-found=true -o wide nodes ; echo ; kubectl get --ignore-not-found=true --all-namespaces=true -o wide pods,service,configmap,ingresses,statefulsets,deployments,networkpolicies,daemonsets,persistentvolumeclaim,cronjobs,jobs,secrets,horizontalpodautoscalers'"
-alias k8swatchevents='kubectl get events --watch=true'
+alias watch='watch '
+
+K8S_BASIC_ASSETS="pods,services,ingresses,deployments,daemonsets,statefulsets,replicasets,horizontalpodautoscalers,poddisruptionbudgets"
+K8S_CMD="kubectl get -o wide --sort-by='{.metadata.name}' componentstatuses ; echo ; kubectl get -o wide nodes ; echo ; kubectl get  --ignore-not-found ${K8S_BASIC_ASSETS}"
+K8S_MORE_CMD="kubectl get -o wide --sort-by='{.metadata.name}' componentstatuses ; echo ; kubectl get -o wide nodes ; echo ; kubectl get --ignore-not-found ${K8S_BASIC_ASSETS},cronjobs,jobs,secrets,configmaps,networkpolicies,endpoints,replicationcontrollers,controllerrevisions,podsecuritypolicies,pods,persistentvolumeclaims,persistentvolumes,volumeattachments"
+
+alias k8sshow="${K8S_CMD}"
+alias k8sshowall="${K8S_CMD} --all-namespaces"
+alias k8swatch="watch -n 1 '${K8S_CMD}'"
+alias k8swatchall="watch -n 1 '${K8S_CMD} --all-namespaces -owide'"
+alias k8sshowmore="${K8S_MORE_CMD}"
+alias k8sshowmoreall="${K8S_MORE_CMD} --all-namespaces"
+alias k8sshoweverything="${K8S_MORE_CMD} -o wide"
+alias k8sshoweverythingall="${K8S_MORE_CMD} -o wide --all-namespaces"
 
 alias aws_who_am_i='echo "ACCOUNT  : $(aws iam list-account-aliases | jq -r '.AccountAliases[]')" ; echo "USER ARN : $(aws sts get-caller-identity | jq -r '.Arn')"'
 alias aws_clear_env_creds='for item in $(set | grep AWS | grep KEY | awk -F= '"'"'{print $1}'"'"'); do unset ${item}; done'
 alias aws_creds='mv ~/Downloads/credentials ~/.aws/credentials'
+alias kc_gcon='kubectl config get-contexts'
+
+alias vlogin='vault login -method=userpass username=stephanie.hilton && unset VAULT_TOKEN'
+alias vprod='export VAULT_ADDR=https://vault.iris.travisperkins.digital/'
+alias vsandpit='export VAULT_ADDR=https://vault.sandpit.fkaj.com/'
+alias vwhoami="vault token lookup -format=json | jq -j '.data.meta'"
+alias vloginapp='export VAULT_TOKEN="$(vault write auth/approle/login role_id=7037d7f6-74c7-c133-2ed4-6d15fe858cf2 secret_id=87fe2b9d-2adc-ca2a-ad0e-0b979786e1ac -format=json | jq -r '.auth.client_token' )"'
+
+alias iris01='aws eks update-kubeconfig --name iris01'
+alias iris02='aws eks update-kubeconfig --name iris02'
+alias gitlab-com-runners='aws eks update-kubeconfig --name gitlab-com-runners'
+alias refraction='aws eks update-kubeconfig --name refraction'
 
 set -o vi
 
