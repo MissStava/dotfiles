@@ -19,6 +19,7 @@ alias tf='terraform'
 alias cgs='clear; git status'
 
 alias watch='watch '
+alias vpn='sudo openvpn --config sharedvpn.ovpn'
 
 K8S_BASIC_ASSETS="pods,services,ingresses,deployments,daemonsets,statefulsets,replicasets,horizontalpodautoscalers,poddisruptionbudgets"
 K8S_CMD="kubectl get -o wide --sort-by='{.metadata.name}' componentstatuses ; echo ; kubectl get -o wide nodes ; echo ; kubectl get  --ignore-not-found ${K8S_BASIC_ASSETS}"
