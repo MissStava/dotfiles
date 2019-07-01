@@ -49,6 +49,10 @@ alias iris01='aws eks update-kubeconfig --name iris01'
 alias iris02='aws eks update-kubeconfig --name iris02'
 alias gitlab-com-runners='aws eks update-kubeconfig --name gitlab-com-runners'
 alias refraction='aws eks update-kubeconfig --name refraction'
+alias digitaldev01='aws eks update-kubeconfig --name digitaldev01'
+alias digitaltest01='aws eks update-kubeconfig --name digitaltest01'
+alias digitalstage01='aws eks update-kubeconfig --name digitalstage01'
+alias digitalprod01='aws eks update-kubeconfig --name digitalprod01'
 
 set -o vi
 
