@@ -20,6 +20,8 @@ alias cgs='clear; git status'
 
 alias watch='watch '
 alias vpn='sudo openvpn --config sharedvpn.ovpn'
+alias aws_ew1='export AWS_REGION=eu-west-1'
+alias aws_ew2='export AWS_REGION=eu-west-2'
 
 K8S_BASIC_ASSETS="pods,services,ingresses,deployments,daemonsets,statefulsets,replicasets,horizontalpodautoscalers,poddisruptionbudgets"
 K8S_CMD="kubectl get -o wide --sort-by='{.metadata.name}' componentstatuses ; echo ; kubectl get -o wide nodes ; echo ; kubectl get  --ignore-not-found ${K8S_BASIC_ASSETS}"
@@ -37,7 +39,8 @@ alias k8sshoweverythingall="${K8S_MORE_CMD} -o wide --all-namespaces"
 alias aws_who_am_i='echo "ACCOUNT  : $(aws iam list-account-aliases | jq -r '.AccountAliases[]')" ; echo "USER ARN : $(aws sts get-caller-identity | jq -r '.Arn')"'
 alias aws_clear_env_creds='for item in $(set | grep AWS | grep KEY | awk -F= '"'"'{print $1}'"'"'); do unset ${item}; done'
 alias aws_creds='mv ~/Downloads/credentials ~/.aws/credentials'
-alias kc_gcon='kubectl config get-contexts'
+alias kc_cont_all='kubectl config get-contexts'
+alias kc_cont_cur='kubectl config current-context'
 
 alias vlogin='vault login -method=userpass username=stephanie.hilton && unset VAULT_TOKEN'
 alias vprod='export VAULT_ADDR=https://vault.iris.travisperkins.digital/'
