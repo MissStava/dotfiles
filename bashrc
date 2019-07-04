@@ -22,6 +22,7 @@ alias watch='watch '
 alias vpn='sudo openvpn --config sharedvpn.ovpn'
 alias aws_ew1='export AWS_REGION=eu-west-1'
 alias aws_ew2='export AWS_REGION=eu-west-2'
+alias b='source ~/.bashrc'
 
 K8S_BASIC_ASSETS="pods,services,ingresses,deployments,daemonsets,statefulsets,replicasets,horizontalpodautoscalers,poddisruptionbudgets"
 K8S_CMD="kubectl get -o wide --sort-by='{.metadata.name}' componentstatuses ; echo ; kubectl get -o wide nodes ; echo ; kubectl get  --ignore-not-found ${K8S_BASIC_ASSETS}"
