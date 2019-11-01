@@ -17,6 +17,7 @@ alias gcl='gcloud'
 alias kc='kubectl'
 alias tf='terraform'
 alias cgs='clear; git status'
+alias c='clear'
 
 alias watch='watch '
 alias vpn='sudo openvpn --config sharedvpn.ovpn'
@@ -32,10 +33,17 @@ alias k8sshow="${K8S_CMD}"
 alias k8sshowall="${K8S_CMD} --all-namespaces"
 alias k8swatch="watch -n 1 '${K8S_CMD}'"
 alias k8swatchall="watch -n 1 '${K8S_CMD} --all-namespaces -owide'"
+alias k8sevents='kubectl get events --all-namespaces=true --show-kind=true --watch=true'
 alias k8sshowmore="${K8S_MORE_CMD}"
 alias k8sshowmoreall="${K8S_MORE_CMD} --all-namespaces"
 alias k8sshoweverything="${K8S_MORE_CMD} -o wide"
 alias k8sshoweverythingall="${K8S_MORE_CMD} -o wide --all-namespaces"
+alias k8swatcheverything="watch -n 1 '${K8S_MORE_CMD}'"
+alias k8swatcheverythingall="watch -n 1 '${K8S_MORE_CMD} --all-namespaces -owide'"
+
+alias ubuntu_run='kubectl run steph --namespace=kube-system --image ubuntu:latest --generator=run-pod/v1 --stdin=true --tty=true -- /bin/bash'
+alias ubuntu_attach='kubectl attach steph --namespace=kube-system --container=steph --stdin=true --tty=true'
+alias ubuntu_delete='kubectl delete --namespace=kube-system pod/steph'
 
 alias aws_who_am_i='echo "ACCOUNT  : $(aws iam list-account-aliases | jq -r '.AccountAliases[]')" ; echo "USER ARN : $(aws sts get-caller-identity | jq -r '.Arn')"'
 alias aws_clear_env_creds='for item in $(set | grep AWS | grep KEY | awk -F= '"'"'{print $1}'"'"'); do unset ${item}; done'
@@ -51,9 +59,11 @@ alias vloginapp='export VAULT_TOKEN="$(vault write auth/approle/login role_id=70
 
 alias iris01='aws eks update-kubeconfig --name iris01'
 alias iris02='aws eks update-kubeconfig --name iris02'
-alias gitlab-com-runners='aws eks update-kubeconfig --name gitlab-com-runners'
+alias runners='aws eks update-kubeconfig --name runners'
 alias refraction='aws eks update-kubeconfig --name refraction'
+alias sandpit01='aws eks update-kubeconfig --name sandpit01'
 alias digitaldev01='aws eks update-kubeconfig --name digitaldev01'
+alias digitaldev02='aws eks update-kubeconfig --name digitaldev02'
 alias digitaltest01='aws eks update-kubeconfig --name digitaltest01'
 alias digitalstage01='aws eks update-kubeconfig --name digitalstage01'
 alias digitalprod01='aws eks update-kubeconfig --name digitalprod01'
