@@ -2,7 +2,7 @@
 	default = simple
 [user]
 	name = Stephanie Hilton
-	email = null.method@gmail.com
+	email = stephanie.hilton@travisperkins.co.uk
 [core]
 	editor = vim
 	autocrlf = input
@@ -19,3 +19,5 @@
 	autosetuprebase = always
 [pull]
 	rebase = true
+[url "git@gitlab.com:"]
+	insteadOf = https://gitlab.com/

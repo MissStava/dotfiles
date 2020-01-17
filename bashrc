@@ -1,4 +1,5 @@
 export PATH=$PATH:~/gitlab/gitlab.com/travis-perkins/ccoe/docker/tooling/scripts
+export PATH=$PATH:~/Scripts
 
 SSH_ENV=$HOME/.ssh/environment
 
@@ -18,12 +19,16 @@ alias kc='kubectl'
 alias tf='terraform'
 alias cgs='clear; git status'
 alias c='clear'
+alias gco='git commit -am "Snapshot"'
 
 alias watch='watch '
 alias vpn='sudo openvpn --config sharedvpn.ovpn'
 alias aws_ew1='export AWS_REGION=eu-west-1'
 alias aws_ew2='export AWS_REGION=eu-west-2'
 alias b='source ~/.bashrc'
+alias git_ssh='git config --global url."git@gitlab.com:".insteadOf https://gitlab.com/'
+alias tf11='sudo mv /usr/local/bin/terraform /usr/local/bin/terraform1216; sudo mv /usr/local/bin/terraform1114 /usr/local/bin/terraform'
+alias tf12='sudo mv /usr/local/bin/terraform /usr/local/bin/terraform1114; sudo mv /usr/local/bin/terraform1216 /usr/local/bin/terraform'
 
 K8S_BASIC_ASSETS="pods,services,ingresses,deployments,daemonsets,statefulsets,replicasets,horizontalpodautoscalers,poddisruptionbudgets"
 K8S_CMD="kubectl get -o wide --sort-by='{.metadata.name}' componentstatuses ; echo ; kubectl get -o wide nodes ; echo ; kubectl get  --ignore-not-found ${K8S_BASIC_ASSETS}"
@@ -53,13 +58,14 @@ alias kc_cont_cur='kubectl config current-context'
 
 alias vlogin='vault login -method=userpass username=stephanie.hilton && unset VAULT_TOKEN'
 alias vprod='export VAULT_ADDR=https://vault.iris.travisperkins.digital/'
-alias vsandpit='export VAULT_ADDR=https://vault.sandpit.fkaj.com/'
+alias vsandpit='export VAULT_ADDR=https://vault.sandpit01.travisperkins.digital/'
 alias vwhoami="vault token lookup -format=json | jq -j '.data.meta'"
 alias vloginapp='export VAULT_TOKEN="$(vault write auth/approle/login role_id=7037d7f6-74c7-c133-2ed4-6d15fe858cf2 secret_id=87fe2b9d-2adc-ca2a-ad0e-0b979786e1ac -format=json | jq -r '.auth.client_token' )"'
 
 alias iris01='aws eks update-kubeconfig --name iris01'
 alias iris02='aws eks update-kubeconfig --name iris02'
-alias runners='aws eks update-kubeconfig --name runners'
+alias runners01='aws eks update-kubeconfig --name runners01'
+alias runners02='aws eks update-kubeconfig --name runners02'
 alias refraction='aws eks update-kubeconfig --name refraction'
 alias sandpit01='aws eks update-kubeconfig --name sandpit01'
 alias digitaldev01='aws eks update-kubeconfig --name digitaldev01'
