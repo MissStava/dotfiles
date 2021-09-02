@@ -27,7 +27,7 @@ alias git_ssh='git config --global url."git@gitlab.com:".insteadOf https://gitla
 alias rnm='sudo service network-manager restart'
 
 alias git_refresh='git.reset.all.sh ; git.prune.tag.all.sh ; git.prune.branch.all.sh ; git.fetch.all.sh ; git.pull.all.sh ; git.push.all.sh ; git.clean.logs.all.sh'
-alias git_master_refresh='cd ~/git/gitlab.com; ./git.checkout.main.branch.sh; ./git.reset.all.sh ; ./git.prune.tag.all.sh ; ./git.prune.branch.all.sh ; ./git.fetch.all.sh ; ./git.pull.all.sh ; ./git.push.all.sh ; ./git.clean.logs.all.sh'
+alias git_master_refresh='cd ~/git/gitlab.com/git_scripts/; ./git.checkout.main.branch.sh; ./git.reset.all.sh ; ./git.prune.tag.all.sh ; ./git.prune.branch.all.sh ; ./git.fetch.all.sh ; ./git.pull.all.sh ; ./git.push.all.sh ; ./git.clean.logs.all.sh'
 
 ##########################################################################################################
 
